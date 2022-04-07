@@ -30,7 +30,6 @@ class clientController {
 
   async createClient(req,res) {
     try {
-      console.log('tong')
       const id = await clientService.createClient(req.body);
       if(id)
       res.status(201).json({success: true}); 

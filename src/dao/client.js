@@ -12,12 +12,12 @@ class clientDAO {
     return await db('client').where('numCompte',numCompte).first();
   }
 
-  async createClient(numCompte, nomClient, solde)
+  async createClient(numCompte, nomClient)
   {
     await db('client').insert({
       numCompte,
       nomClient,
-      solde
+      solde:0
     });
 
     return numCompte;

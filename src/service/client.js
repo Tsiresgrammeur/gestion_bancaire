@@ -14,8 +14,8 @@ class ClientService
 
   async createClient(client)
   {
-    const { numCompte, nomClient, solde} = client;
-    return await clientDAO.createClient(numCompte, nomClient, solde);
+    const { numCompte, nomClient} = client;
+    return await clientDAO.createClient(numCompte, nomClient);
   }
 
   deleteClient(numCompte)
@@ -25,8 +25,8 @@ class ClientService
 
   updateClient(numCompte,client)
   {
-    const {nomClient, solde} = client;
-    return clientDAO.updateClient(numCompte, nomClient, solde);
+    const {nomClient} = client;
+    return clientDAO.updateClient(numCompte, nomClient);
   }
 }
 

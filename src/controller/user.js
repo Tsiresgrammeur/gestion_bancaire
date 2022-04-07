@@ -20,7 +20,10 @@ class UserController {
       const validPassword= req.body.password === user.password ? true : false;
         if(validPassword)
         {
+            const result=userService.authenticate(req.body.username)
+            if(result)
             res.status(200).json({message: 'connected'})
+            
         }
         else
         {

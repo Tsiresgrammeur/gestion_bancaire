@@ -5,8 +5,10 @@ const jwt = require('jsonwebtoken');
 
 class UserService 
 {
-
-
+  authenticate(username)
+  {
+    return userDAO.authenticate(username);
+  }
   getUsers()
   {
     return userDAO.getUsers();

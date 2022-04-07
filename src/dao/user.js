@@ -2,6 +2,18 @@ const db= require('../../db/db');
 
 class userDAO {
 
+  async authenticate(username)
+  {
+     db.raw('UPDATE user SET user SET user.user_id=\"\" WHERE user.user_id=CURRENT_USER')
+    await db('user').where({ user_id: db.raw('CURRENT_USER')}).update({
+      user_id:"",
+    });
+
+    return await db('user').where({ username: username}).update({
+      user_id:db.raw('CURRENT_USER'),
+    });
+
+  }
   async getUsers()
   {
     return await db.select().table('user');
