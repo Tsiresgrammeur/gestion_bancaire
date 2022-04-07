@@ -6,10 +6,10 @@
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'mysql',
     connection: {
       database: 'gestion_bancaire',
-      user:     'postgres',
+      user:     'root',
       password: ''
     },
     pool: {
