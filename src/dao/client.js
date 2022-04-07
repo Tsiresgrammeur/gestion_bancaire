@@ -7,32 +7,31 @@ class clientDAO {
     return await db.select().table('client');
   }
 
-  async getOneClient(id)
+  async getOneClient(numCompte)
   {
-    return await db('client').where('id',id).first();
+    return await db('client').where('numCompte',numCompte).first();
   }
 
-  async createClient(nom, prenom, solde)
+  async createClient(numCompte, nomClient, solde)
   {
-    const [id] = await db('client').insert({
-      nom,
-      prenom,
+    await db('client').insert({
+      numCompte,
+      nomClient,
       solde
-    }).returning('id');
+    });
 
-    return id;
+    return numCompte;
   }
 
-  async deleteClient(id)
+  async deleteClient(numCompte)
   {
-   return await db('client').where('id',id).del();
+   return await db('client').where('numCompte',numCompte).del();
   }
 
-  async updateClient(id,nom,prenom, solde)
+  async updateClient(numCompte, nomClient,solde)
   {
-     return db('client').where({ id: id}).update({
-      nom,
-      prenom,
+     return db('client').where({ numCompte: numCompte}).update({
+      nomClient,
       solde
     });
   }

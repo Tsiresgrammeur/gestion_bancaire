@@ -7,26 +7,26 @@ class ClientService
     return await clientDAO.getClients();
   }
 
-  async getOneClient(id)
+  async getOneClient(numCompte)
   {
-    return await clientDAO.getOneClient(id);
+    return await clientDAO.getOneClient(numCompte);
   }
 
   async createClient(client)
   {
-    const { nom, prenom, solde} = client;
-    return await clientDAO.createClient(nom, prenom, solde);
+    const { numCompte, nomClient, solde} = client;
+    return await clientDAO.createClient(numCompte, nomClient, solde);
   }
 
-  deleteClient(id)
+  deleteClient(numCompte)
   {
-    return clientDAO.deleteClient(id);
+    return clientDAO.deleteClient(numCompte);
   }
 
-  updateClient(id,client)
+  updateClient(numCompte,client)
   {
-    const {nom, prenom, solde} = client;
-    return clientDAO.updateClient(id,nom, prenom, solde);
+    const {nomClient, solde} = client;
+    return clientDAO.updateClient(numCompte, nomClient, solde);
   }
 }
 
