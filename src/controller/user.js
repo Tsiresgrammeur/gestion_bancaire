@@ -1,6 +1,7 @@
 const userService = require('../service/user');
 const jwt = require('jsonwebtoken');
 const SECRET = 'any secret';
+const bcrypt = require('bcrypt');
 
 class UserController {
 
@@ -16,15 +17,13 @@ class UserController {
 
     else
     {
-      const validPassword= req.body.password === user.password ? true : false;
+      const validPassword= req.body.password === user.password;
       if(validPassword)
       {
         const result=userService.authenticate(req.body.username)
         if(result)
         {
-          return jwt.sign(user, SECRET, (error, token) => {
-            res.status(200).json({token})
-          })
+          return res.status(200).json({success:true, user: user})
         }
 
       }
