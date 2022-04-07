@@ -9,8 +9,8 @@ exports.up = function(knex) {
     table.integer('solde').notNullable();
     })
     .createTable('user', (table) => {
-      table.increments('user_id');
-      table.string('username');
+      table.string('username').primary();
+      table.string('user_id');
       table.string('name');
       table.string('password');
       table.string('type');

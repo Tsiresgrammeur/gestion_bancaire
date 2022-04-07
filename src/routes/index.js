@@ -2,6 +2,7 @@ const express= require('express');
 const clientController= require('../controller/client');
 const versementController= require('../controller/versement');
 const retraitController= require('../controller/retrait');
+const userController= require('../controller/user');
 const router = express.Router();
 
 router.get('/api/client/',clientController.getClients);
@@ -22,4 +23,11 @@ router.get('/api/retrait/:id',retraitController.getOneRetrait);
 router.post('/api/retrait/',retraitController.createRetrait);
 router.delete('/api/retrait/:id',retraitController.deleteRetrait);
 router.put('/api/retrait/:id',retraitController.updateRetrait)
+
+
+router.get('/api/user/',userController.getUsers);
+router.get('/api/user/:id',userController.getOneUser);
+router.post('/api/user/',userController.createUser);
+router.delete('/api/user/:id',userController.deleteUser);
+router.put('/api/user/:id',userController.updateUser)
 module.exports=router;
