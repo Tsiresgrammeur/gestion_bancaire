@@ -23,7 +23,7 @@ class userDAO {
       type
     });
 
-    return id;
+    return username;
   }
 
   async deleteUser(id)

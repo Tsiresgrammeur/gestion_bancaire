@@ -26,8 +26,11 @@ router.put('/api/retrait/:id',retraitController.updateRetrait)
 
 
 router.get('/api/user/',userController.getUsers);
+router.post('/api/login/',userController.authenticate);
 router.get('/api/user/:id',userController.getOneUser);
 router.post('/api/user/',userController.createUser);
 router.delete('/api/user/:id',userController.deleteUser);
 router.put('/api/user/:id',userController.updateUser)
+
+
 module.exports=router;

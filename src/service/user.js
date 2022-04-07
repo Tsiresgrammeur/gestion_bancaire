@@ -1,7 +1,12 @@
 const userDAO = require('../dao/user');
+const SECRET='any secrets';
+const jwt = require('jsonwebtoken');
+
 
 class UserService 
 {
+
+
   getUsers()
   {
     return userDAO.getUsers();

@@ -1,10 +1,12 @@
 const userService = require('../service/user');
+const jwt = require('jsonwebtoken');
+const SECRET = 'any secret';
 
 class UserController {
 
   async authenticate(req,res)
   {
-    var user= await userService.getOneUser(req.body.email)
+    var user= await userService.getOneUser(req.body.username)
     if(!user)
     {
       res.status(401).json({
@@ -14,12 +16,11 @@ class UserController {
 
     else
     {
-      const validPassword= await bcrypt.compare(req.body.password, user.password)
+      console.log(user.password + "  fdkfj  " + req.body.password)
+      const validPassword= req.body.password === user.password ? true : false;
         if(validPassword)
         {
-          return jwt.sign(user, SECRET, (error, token) => {
-            res.status(200).json({token})
-          })
+            res.status(200).json({message: 'connected'})
         }
         else
         {
@@ -28,8 +29,6 @@ class UserController {
       }
 
   }
-
-
 
   async getUsers(req,res)
   {
