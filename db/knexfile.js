@@ -10,7 +10,9 @@ module.exports = {
     connection: {
       database: 'gestion_bancaire',
       user:     'root',
-      password: ''
+      password: '',
+      timezone: 'UTC',
+      dateString:true
     },
     pool: {
       min: 2,

@@ -16,20 +16,23 @@ class UserController {
 
     else
     {
-      console.log(user.password + "  fdkfj  " + req.body.password)
       const validPassword= req.body.password === user.password ? true : false;
-        if(validPassword)
+      if(validPassword)
+      {
+        const result=userService.authenticate(req.body.username)
+        if(result)
         {
-            const result=userService.authenticate(req.body.username)
-            if(result)
-            res.status(200).json({message: 'connected'})
-            
+          return jwt.sign(user, SECRET, (error, token) => {
+            res.status(200).json({token})
+          })
         }
-        else
-        {
-          return res.status(401).json({success: false,message:'password does not match'})
-        }
+
       }
+      else
+      {
+        return res.status(401).json({success: false,message:'password does not match'})
+      }
+    }
 
   }
 
@@ -75,7 +78,7 @@ class UserController {
     try{
       const id=await userService.deleteUser(req.params.id);
       if(id)
-      res.status(201).json({success: true});
+        res.status(201).json({success: true});
     }
 
     catch(err){
@@ -88,7 +91,7 @@ class UserController {
     try{
       const id = await userService.updateUser(req.params.id,req.body);
       if(id)
-      res.status(201).json({success: true});
+        res.status(201).json({success: true});
     }
 
     catch(err){

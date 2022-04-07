@@ -3,6 +3,8 @@ const clientController= require('../controller/client');
 const versementController= require('../controller/versement');
 const retraitController= require('../controller/retrait');
 const userController= require('../controller/user');
+const audit_Compte= require('../controller/audit_compte');
+const audit_operation= require('../controller/audit_operation');
 const router = express.Router();
 
 router.get('/api/client/',clientController.getClients);
@@ -32,5 +34,7 @@ router.post('/api/user/',userController.createUser);
 router.delete('/api/user/:id',userController.deleteUser);
 router.put('/api/user/:id',userController.updateUser)
 
+
+router.post('/api/audit_operation/', audit_operation.getAudit);
 
 module.exports=router;

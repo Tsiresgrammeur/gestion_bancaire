@@ -32,7 +32,7 @@ class UserService
   updateUser(username,user)
   {
     const {user_id,name,password,type} = user;
-    return userDAO.updateUser(username,id,user_id,name,password,type);
+    return userDAO.updateUser(username,user_id,name,password,type);
   }
 }
 
