@@ -16,7 +16,7 @@ exports.up = function(knex) {
       table.string('type');
     })
     .createTable('versement', (table) => {
-      table.string('numVersement').primary();
+      table.increments('numVersement');
       table.string('numCheck');
       table.string('numCompte');
       table.integer('montant');
@@ -24,7 +24,7 @@ exports.up = function(knex) {
       table.foreign('numCompte').references('client.numCompte').onDelete('CASCADE').onUpdate('CASCADE');
     })
     .createTable('retrait', (table) => {
-      table.string('numRetrait').primary();
+      table.increments('numRetrait');
       table.string('numCheck');
       table.string('numCompte');
       table.integer('montant');
@@ -80,8 +80,9 @@ exports.up = function(knex) {
 exports.down = function(knex) {
 return knex.schema 
            .dropTable('user')
-           .dropTable('client')
            .dropTable('versement')
+           .dropTable('retrait')
+           .dropTable('client')
            .dropTable('audit_operation')
            .dropTable('audit_retrait')
            .dropTable('audit_versement')
