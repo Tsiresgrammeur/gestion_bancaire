@@ -5,6 +5,8 @@ const retraitController= require('../controller/retrait');
 const userController= require('../controller/user');
 const audit_Compte= require('../controller/audit_compte');
 const audit_operation= require('../controller/audit_operation');
+const audit_retrait= require('../controller/audit_retrait');
+const audit_versement= require('../controller/audit_versement');
 const router = express.Router();
 
 router.get('/api/client/',clientController.getClients);
@@ -35,6 +37,10 @@ router.delete('/api/user/:id',userController.deleteUser);
 router.put('/api/user/:id',userController.updateUser)
 
 
+router.post('/api/audit_compte/', audit_Compte.getAudit);
 router.post('/api/audit_operation/', audit_operation.getAudit);
+router.post('/api/audit_retrait/', audit_retrait.getAudit);
+router.post('/api/audit_versement/', audit_versement.getAudit);
+
 
 module.exports=router;
