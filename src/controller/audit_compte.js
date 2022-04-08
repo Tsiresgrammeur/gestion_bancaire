@@ -1,6 +1,5 @@
 const audit_CompteService=require('../service/audit_compte');
 class audit_Compte{
-
   async getAudit(req,res)
   {
     try{
