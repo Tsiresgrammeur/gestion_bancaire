@@ -22,7 +22,7 @@ class audit_CompteDAO {
       return await db.select(
         'id','ops','date',
         'audit_compte.numCompte', 'anc_solde',
-        'n_solde','audit_compte.nomClient',
+        'n_solde','client.nomClient',
         'user.username','user.name'
       ).from('audit_compte')
         .leftJoin('client','audit_compte.numCompte','client.numCompte')

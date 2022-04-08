@@ -20,7 +20,7 @@ class audit_retraitDAO {
     return await db.select(
       'id','ops','date',
       'audit_retrait.numCompte', 'anc_montant',
-      'n_montant','audit_retrait.nomClient',
+      'n_montant','client.nomClient',
       'user.username','user.name'
     ).from('audit_retrait')
       .leftJoin('client','audit_retrait.numCompte','client.numCompte')
