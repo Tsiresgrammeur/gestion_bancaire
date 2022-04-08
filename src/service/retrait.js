@@ -1,5 +1,6 @@
 
 const retraitDAO = require('../dao/retrait');
+const clientDAO = require('../dao/client')
 
 class RetraitService 
 {
@@ -16,7 +17,12 @@ class RetraitService
   async createRetrait(retrait)
   {
     const { numCheck, numCompte, montant, date} = retrait;
-    return await retraitDAO.createRetrait( numCheck, numCompte, montant, date);
+    const client = await clientDAO.getOneClient(numCompte);
+    console.log(client.solde)
+    if(client.solde >= montant )
+    {
+      return await retraitDAO.createRetrait( numCheck, numCompte, montant, date);
+    }
   }
 
   deleteRetrait(numRetrait)

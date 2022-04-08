@@ -33,6 +33,8 @@ class retraitController {
       const id = await retraitService.createRetrait(req.body);
       if(id)
       res.status(201).json({success: true}); 
+      else
+      res.status(401).json({success: false}); 
     }
     catch(err){
       console.error(err);

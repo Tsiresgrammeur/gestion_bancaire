@@ -12,8 +12,8 @@ class audit_operationDAO {
         'montant','client.nomClient',
         'user.username','user.name'
       ).from('audit_operation')
-        .innerJoin('client','audit_operation.numCompte','client.numCompte')
-        .innerJoin('user','audit_operation.username','user.username')
+        .leftJoin('client','audit_operation.numCompte','client.numCompte')
+        .leftJoin('user','audit_operation.username','user.username')
         .whereBetween('audit_operation.date',[first_date,second_date]);
     }
     return await db.select(
@@ -22,8 +22,8 @@ class audit_operationDAO {
       'montant','client.nomClient',
       'user.username','user.name'
     ).from('audit_operation')
-      .innerJoin('client','audit_operation.numCompte','client.numCompte')
-      .innerJoin('user','audit_operation.username','user.username');
+      .leftJoin('client','audit_operation.numCompte','client.numCompte')
+      .leftJoin('user','audit_operation.username','user.username');
   }
 }
 

@@ -1,6 +1,6 @@
 const db= require('../../db/db');
 
-class audit_CompteDAO {
+class audit_retraitDAO {
 
   async getAudit(first_date,second_date)
   {
@@ -12,8 +12,8 @@ class audit_CompteDAO {
       'n_montant','client.nomClient',
       'user.username','user.name'
     ).from('audit_retrait')
-      .innerJoin('client','audit_retrait.numCompte','client.numCompte')
-      .innerJoin('user','audit_retrait.username','user.username')
+      .leftJoin('client','audit_retrait.numCompte','client.numCompte')
+      .leftJoin('user','audit_retrait.username','user.username')
       .whereBetween('audit_retrait.date',[first_date,second_date]);
     }
 
@@ -23,9 +23,9 @@ class audit_CompteDAO {
       'n_montant','client.nomClient',
       'user.username','user.name'
     ).from('audit_retrait')
-      .innerJoin('client','audit_retrait.numCompte','client.numCompte')
-      .innerJoin('user','audit_retrait.username','user.username')
+      .leftJoin('client','audit_retrait.numCompte','client.numCompte')
+      .leftJoin('user','audit_retrait.username','user.username')
   }
 }
 
-module.exports = new audit_CompteDAO();
+module.exports = new audit_retraitDAO();
