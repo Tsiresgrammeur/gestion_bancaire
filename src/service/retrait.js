@@ -30,10 +30,16 @@ class RetraitService
     return retraitDAO.deleteRetrait(numRetrait);
   }
 
-  updateRetrait(numRetrait,retrait)
+  async updateRetrait(numRetrait,retrait)
   {
     const { numCheck, numCompte, montant, date} = retrait;
-    return retraitDAO.updateRetrait(numRetrait, numCheck, numCompte, montant, date);
+    const client = await clientDAO.getOneClient(numCompte);
+    const retrait_courant= await retraitDAO.getOneRetrait(numRetrait);
+    let solde = client.solde + retrait_courant.montant - montant;
+    if(solde >= 0)
+    {
+      return retraitDAO.updateRetrait(numRetrait, numCheck, numCompte, montant, date);
+    }
   }
 }
 

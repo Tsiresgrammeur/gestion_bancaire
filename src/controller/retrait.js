@@ -34,7 +34,7 @@ class retraitController {
       if(id)
       res.status(201).json({success: true}); 
       else
-      res.status(401).json({success: false}); 
+      res.status(409).json({success: false, message: "solde insuffisant"}); 
     }
     catch(err){
       console.error(err);
@@ -60,6 +60,11 @@ class retraitController {
       const id = await retraitService.updateRetrait(req.params.id,req.body);
       if(id)
       res.status(201).json({success: true});
+      else
+      {
+        res.status(409).json({success: false, message: "solde insuffisant"});
+
+      }
     }
 
     catch(err){
