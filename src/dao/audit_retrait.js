@@ -9,10 +9,9 @@ class audit_retraitDAO {
     return await db.select(
       'id','ops','date',
       'audit_retrait.numCompte', 'anc_montant',
-      'n_montant','client.nomClient',
+      'n_montant','audit_retrait.nomClient',
       'user.username','user.name'
     ).from('audit_retrait')
-      .leftJoin('client','audit_retrait.numCompte','client.numCompte')
       .leftJoin('user','audit_retrait.username','user.username')
       .whereBetween('audit_retrait.date',[first_date,second_date]);
     }
@@ -20,10 +19,9 @@ class audit_retraitDAO {
     return await db.select(
       'id','ops','date',
       'audit_retrait.numCompte', 'anc_montant',
-      'n_montant','client.nomClient',
+      'n_montant','audit_retrait.nomClient',
       'user.username','user.name'
     ).from('audit_retrait')
-      .leftJoin('client','audit_retrait.numCompte','client.numCompte')
       .leftJoin('user','audit_retrait.username','user.username')
   }
 }

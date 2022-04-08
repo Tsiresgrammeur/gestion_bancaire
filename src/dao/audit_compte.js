@@ -9,10 +9,9 @@ class audit_CompteDAO {
       return await db.select(
         'id','ops','date',
         'audit_compte.numCompte', 'anc_solde',
-        'n_solde','client.nomClient',
+        'n_solde','audit_compte.nomClient',
         'user.username','user.name'
       ).from('audit_compte')
-        .leftJoin('client','audit_compte.numCompte','client.numCompte')
         .leftJoin('user','audit_compte.username','user.username')
         .whereBetween('audit_compte.date',[first_date,second_date]);
       //.where('audit_compte.date','<', second_date)
@@ -22,10 +21,9 @@ class audit_CompteDAO {
       return await db.select(
         'id','ops','date',
         'audit_compte.numCompte', 'anc_solde',
-        'n_solde','client.nomClient',
+        'n_solde','audit_compte.nomClient',
         'user.username','user.name'
       ).from('audit_compte')
-        .leftJoin('client','audit_compte.numCompte','client.numCompte')
         .leftJoin('user','audit_compte.username','user.username');
 
   }

@@ -46,6 +46,7 @@ exports.up = function(knex) {
       table.date('date');
       table.string('numRetrait');
       table.string('numCompte');
+      table.string('nomClient');
       table.integer('anc_montant');
       table.integer('n_montant');
       table.string('username');
@@ -56,6 +57,7 @@ exports.up = function(knex) {
       table.date('date');
       table.string('numVersement');
       table.string('numCompte');
+      table.string('nomClient');
       table.integer('anc_montant');
       table.integer('n_montant');
       table.string('username');
@@ -65,6 +67,7 @@ exports.up = function(knex) {
       table.string('ops');
       table.date('date');
       table.string('numCompte');
+      table.string('nomClient');
       table.integer('anc_solde');
       table.integer('n_solde');
       table.string('username');
