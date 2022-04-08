@@ -11,7 +11,7 @@ class versementController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
 
   }
@@ -24,7 +24,7 @@ class versementController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
 
   }
@@ -36,7 +36,7 @@ class versementController {
       res.status(201).json({success: true}); 
     }
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
   }
 
@@ -49,7 +49,7 @@ class versementController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
   }
 
@@ -62,7 +62,7 @@ class versementController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
   }
 

@@ -10,7 +10,7 @@ class retraitController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
 
   }
@@ -23,7 +23,7 @@ class retraitController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
 
   }
@@ -37,7 +37,7 @@ class retraitController {
       res.status(409).json({success: false, message: "solde insuffisant"}); 
     }
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
   }
 
@@ -50,7 +50,7 @@ class retraitController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
   }
 
@@ -68,7 +68,7 @@ class retraitController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "check existant"}); 
     }
   }
 

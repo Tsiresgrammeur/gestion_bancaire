@@ -10,7 +10,7 @@ class clientController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "compte existant"}); 
     }
 
   }
@@ -23,7 +23,7 @@ class clientController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: err}); 
     }
 
   }
@@ -35,7 +35,7 @@ class clientController {
       res.status(201).json({success: true}); 
     }
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "compte existant"}); 
     }
   }
 
@@ -61,7 +61,7 @@ class clientController {
     }
 
     catch(err){
-      console.error(err);
+      res.status(409).json({success: false, message: "compte existant"}); 
     }
   }
 
